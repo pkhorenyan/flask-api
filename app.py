@@ -110,6 +110,22 @@ def process_post_request():
     else:
         return f'Incorrect request'
 
+@app.route('/api/archive', methods=['GET'])
+def get_archive():
+    try:
+        response = Question.query.all()
+        response_data = []
+        for element in response:
+            response_data.append({
+                'id': element.id,
+                'question': element.question,
+                'answer': element.answer,
+                'date': element.date,
+            })
+        return jsonify(response_data)
+    except:
+        return 'No data yet'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

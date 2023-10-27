@@ -44,7 +44,11 @@ the data will remain intact between container restarts.
 The purpose of this application is to connect to https://jservice.io/api/random and to retrieve
 quiz questions.
 
-There are a couple of ways to do it:
+You can access https://127.0.0.1:5000/api/archive endpoint to see all questions that had been retrieved
+and saved to database.
+If no questions have been saved you'll see 'No data yet' message.
+
+There are a couple of ways to retrieve questions:
 
 1. You can manually send POST request to endpoint https://127.0.0.1:5000/api/
 
@@ -57,7 +61,7 @@ There are a couple of ways to do it:
     "questions_num": integer
 }
 ```
-integer is a number of questions you would like to retrieve
+where integer is a number of questions you would like to retrieve
 
 First time you send POST request you'll get an empty JSON object but on the next request you'll
 get previous number of questions. All questions are being added to the database.
